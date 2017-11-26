@@ -30,8 +30,6 @@ class App extends Component {
   }
 
   componentWillMount() {
-    console.log(!localStorage.getItem('items'));
-
     if (localStorage.getItem('items')) {
       const items = JSON.parse(localStorage.getItem('items'));
       
@@ -48,8 +46,9 @@ class App extends Component {
   addItem(e) {
     const text = this.state.text.replace(/ +/g, ' ');
     // .replace(/[\s]+/g, ' ');
+    // .replace(/ +/g, ' ');
 
-    if (!text.length) {
+    if (!text.length || text.replace(/[\s]+/g, ' ') === ' ') {
       return this.setState({ text: '' });
     }
 
