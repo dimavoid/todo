@@ -30,7 +30,9 @@ class App extends Component {
   }
 
   componentWillMount() {
-    if (!localStorage.getItem('items') === null) {
+    console.log(!localStorage.getItem('items'));
+
+    if (localStorage.getItem('items')) {
       const items = JSON.parse(localStorage.getItem('items'));
       
       this.setState({ items });
