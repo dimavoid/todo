@@ -26,6 +26,7 @@
   background-color: transparent;
   font-size: 0;
   cursor: pointer;
+  outline: none;
 }
 
 .task--completed .task-done {

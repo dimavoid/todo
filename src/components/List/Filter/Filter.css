@@ -26,6 +26,7 @@
   font-weight: 400;
   cursor: pointer;
   transition: 0.3s;
+  outline: none;
 }
 
 .filter-btn:last-of-type {
@@ -34,4 +35,9 @@
 
 .filter-btn:hover {
   background-color: #B4DCED;
+}
+
+.filter-btn-del:active {
+  background-color: #ffffff;
+  opacity: 0.3;
 }

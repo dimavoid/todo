@@ -34,7 +34,7 @@ export default class Filter extends React.Component {
         <button className="filter-btn filter-btn-all" type="button" onClick={this.onAll}>All</button>
         <button className="filter-btn filter-btn-active" type="button" onClick={this.onActive}>Active</button>
         <button className="filter-btn filter-btn-completed" type="button" onClick={this.onCompleted}>Completed</button>
-        <button className="filter-btn" type="button" onClick={this.onDelCompleted}>Del completed</button>
+        <button className="filter-btn filter-btn-del" type="button" onClick={this.onDelCompleted}>Del completed</button>
       </section>
     );
   }

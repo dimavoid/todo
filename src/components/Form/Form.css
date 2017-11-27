@@ -19,6 +19,7 @@
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
+  outline: none;
 }
 
 .form-type::before {
@@ -40,6 +41,11 @@
 }
 
 .form-textarea {
+  resize: none;
+  font-size: 16px;
+  line-height: 24px;
+  flex-grow: 1;
+  margin: 0 10px 0 0;
   padding: 5px;
   border: none;
   border-bottom: 2px solid black;
@@ -48,14 +54,7 @@
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
-}
-
-.form-textarea {
-  resize: none;
-  font-size: 16px;
-  line-height: 24px;
-  flex-grow: 1;
-  margin: 0 10px 0 0;
+  outline: none;
 }
 
 .form-button {
@@ -66,6 +65,7 @@
   font-size: 0;
   background-color: transparent;
   border: none;
+  outline: none;
   background-image: url('./add.svg');
   background-position: center center;
   background-repeat: none;

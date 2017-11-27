@@ -23,7 +23,7 @@ class App extends Component {
     this.delCompletedTasks = this.delCompletedTasks.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (localStorage.getItem('items')) {
       const items = JSON.parse(localStorage.getItem('items'));
       
