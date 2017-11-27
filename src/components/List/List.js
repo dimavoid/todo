@@ -13,6 +13,7 @@ export default class List extends React.Component {
     this.state = {
       filter: 'all'
     }
+    
     this.onAllFilter = this.onAllFilter.bind(this);
     this.onActiveFilter = this.onActiveFilter.bind(this);
     this.onCompletedFilter = this.onCompletedFilter.bind(this);
@@ -64,7 +65,7 @@ export default class List extends React.Component {
           />
         ))
       ) : (
-        <h3 className="list-empty">None tasks</h3>
+        <h3 className="list-empty">None {(this.state.filter === 'all') ? null : this.state.filter} tasks</h3>
     );
 
     notes = (notes.length) ? (

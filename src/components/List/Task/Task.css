@@ -1,8 +1,11 @@
 .task {
   display: flex;
   background: lightblue;
+  background-color: #67B8DE;
   width: 100%;
   margin: 0 0 10px 0;
+  padding: 5px;
+  transition: 0.3s;
 }
 
 .task--completed {
@@ -16,6 +19,19 @@
 .task-done {
   flex-shrink: 0;
   align-self: flex-start;
+  width: 24px;
+  height: 24px;
+  margin: 0 5px 0 0;
+  border: 2px solid black;
+  background-color: transparent;
+  font-size: 0;
+  cursor: pointer;
+}
+
+.task--completed .task-done {
+  background-image: url('./done.svg');
+  background-position: center center;
+  background-repeat: none;
 }
 
 .task-text {
@@ -27,4 +43,13 @@
 .task-del {
   flex-shrink: 0;
   align-self: flex-end;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-color: transparent;
+  font-size: 0;
+  cursor: pointer;
+  background-image: url('./clear.svg');
+  background-position: center center;
+  background-repeat: none;
 }

@@ -1,8 +1,10 @@
 .note {
   display: flex;
-  background: lightblue;
+  background: #B4DCED;
   width: 100%;
   margin: 0 0 10px 0;
+  padding: 5px;
+  border-bottom: 2px solid black;
 }
 
 .note-text {
@@ -15,4 +17,13 @@
 .note-del {
   flex-shrink: 0;
   align-self: flex-end;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-color: transparent;
+  font-size: 0;
+  cursor: pointer;
+  background-image: url('./clear.svg');
+  background-position: center center;
+  background-repeat: none;
 }

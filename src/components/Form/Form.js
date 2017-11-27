@@ -40,7 +40,7 @@ export default class Form extends React.Component {
     return (
       <form className="form" onSubmit={this.handleSubmit}>
         <button className={classFormType} type="button" onClick={this.handleClick}>Note:</button>
-        <Textarea className="form-textarea" value={this.props.text} onChange={this.handleChange} onKeyDown={this.handleKeyDown} />
+        <Textarea className="form-textarea" value={this.props.text} onChange={this.handleChange} onKeyDown={this.handleKeyDown} autoFocus/>
         <button className="form-button">Add {this.props.type}</button>
       </form>
     );

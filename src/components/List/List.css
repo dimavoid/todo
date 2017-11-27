@@ -1,7 +1,7 @@
 .list {
   display: flex;
   flex-wrap: wrap;
-  border: 2px solid black;
+  border-top: 2px solid black;
   width: 100%;
 }
 
@@ -12,15 +12,18 @@
 .list-tasks {
   width: 100%;
   flex-grow: 1;
-  padding: 15px 15px 0 15px;
-  
+  padding: 0 10px 0 10px;
 }
 
 .list-notes {
   width: 100%;
   flex-grow: 1;
-  padding: 15px 15px 0 15px;
+  padding: 0 10px 0 10px;
   order: 1;
+}
+
+.list-title {
+  margin: 25px 0 10px 0;
 }
 
 @media (min-width: 640px) {

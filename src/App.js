@@ -10,13 +10,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      items: [
-        // {id: 123, type: 'task', text: 'qwerty', active: true},
-        // {id: 234, type: 'task', text: 'zxcvbn', active: true},
-        // {id: 345, type: 'note', text: 'edcrfv edcrfv edcrfv'},
-        // {id: 456, type: 'task', text: 'asdfgh', active: false},
-        // {id: 567, type: 'note', text: 'qazwsx edcrfv edcrfv'}
-      ],
+      items: [],
       type: 'task',
       text: ''
     };
@@ -37,20 +31,14 @@ class App extends Component {
     };
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    localStorage.setItem('items', JSON.stringify(nextState.items));
-
-    return true;
-  }
+  componentDidUpdate(prevProps, prevState) {
+    localStorage.setItem('items', JSON.stringify(this.state.items));
+  };
 
   addItem(e) {
-    const text = this.state.text.replace(/ +/g, ' ');
-    // .replace(/[\s]+/g, ' ');
-    // .replace(/ +/g, ' ');
+    const text = this.state.text.replace(/ +/g, ' ').replace(/\n+/g, '\n');
 
-    if (!text.length || text.replace(/[\s]+/g, ' ') === ' ') {
-      return this.setState({ text: '' });
-    }
+    if (!text.trim()) return this.setState({ text: '' });
 
     const item = {
       id: Date.now(),

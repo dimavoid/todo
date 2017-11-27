@@ -30,10 +30,10 @@ export default class Filter extends React.Component {
 
   render() {
     return (
-      <section className="filter">
-        <button className="filter-btn" type="button" onClick={this.onAll}>All</button>
-        <button className="filter-btn" type="button" onClick={this.onActive}>Active</button>
-        <button className="filter-btn" type="button" onClick={this.onCompleted}>Completed</button>
+      <section className={`filter filter-${this.props.filter}`}>
+        <button className="filter-btn filter-btn-all" type="button" onClick={this.onAll}>All</button>
+        <button className="filter-btn filter-btn-active" type="button" onClick={this.onActive}>Active</button>
+        <button className="filter-btn filter-btn-completed" type="button" onClick={this.onCompleted}>Completed</button>
         <button className="filter-btn" type="button" onClick={this.onDelCompleted}>Del completed</button>
       </section>
     );
