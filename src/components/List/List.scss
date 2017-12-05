@@ -1,0 +1,83 @@
+@import 'variables.scss';
+
+.List {
+  display: flex;
+  flex-wrap: wrap;
+
+  width: 100%;
+
+  border-top: 2px solid black;
+}
+
+.List__tasks {
+  width: 100%;
+  padding: 0 10px 0 10px;
+
+  display: flex;
+  flex-direction: column;
+}
+.List__notes {
+  width: 100%;
+  padding: 0 10px 0 10px;
+}
+
+.List__title {
+  font-family: $font-family;
+  font-size: $font-size-l;
+  line-height: $line-height-m;
+  font-weight: $font-weight-l;
+}
+
+.List__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin: auto 0 10px 0;
+}
+
+.List__del-completed {
+  flex-shrink: 0;
+
+  margin: 0 0 0 auto;
+  
+  border: 2px solid black;
+  background-color: #ffffff;
+
+  font-family: $font-family;
+  font-size: $font-size-s;
+  line-height: $line-height-m;
+  font-weight: $font-weight-m;
+  
+  transition: 0.3s;
+
+  outline: none;
+  cursor: pointer;
+    &:hover {
+      background-color: #B4DCED;
+    }
+    &:active {
+      background-color: #ffffff;
+      opacity: 0.3;
+    }
+}
+
+.List__del-completed--disabled {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.List__empty {
+  width: 100%;
+
+  margin: 0;
+  padding: 5px 10px 11px 10px;
+}
+
+@media ($tablet-widths) {
+  .List__tasks {
+    width: 40%;
+  }
+  .List__notes {
+    width: 60%;
+  }
+}

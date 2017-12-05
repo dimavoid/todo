@@ -1,56 +1,69 @@
-.task {
+.Task {
   display: flex;
+
   background: lightblue;
   background-color: #67B8DE;
+
   width: 100%;
+  
   margin: 0 0 10px 0;
   padding: 5px;
+
   transition: 0.3s;
 }
 
-.task--completed {
-  opacity: 0.3;
-}
-
-.task--completed .task-text {
-  text-decoration: line-through;
-}
-
-.task-done {
+.Task__toggle {
   flex-shrink: 0;
   align-self: flex-start;
+
   width: 24px;
   height: 24px;
+
   margin: 0 5px 0 0;
+
   border: 2px solid black;
   background-color: transparent;
+
   font-size: 0;
+
   cursor: pointer;
   outline: none;
 }
 
-.task--completed .task-done {
-  background-image: url('./done.svg');
-  background-position: center center;
-  background-repeat: none;
-}
-
-.task-text {
+.Task__text {
   flex-grow: 1;
   margin: 0;
   padding: 0;
 }
 
-.task-del {
+.Task__del {
   flex-shrink: 0;
   align-self: flex-end;
+
   width: 24px;
   height: 24px;
+
   border: none;
   background-color: transparent;
+
   font-size: 0;
-  cursor: pointer;
-  background-image: url('./clear.svg');
+
+  background-image: url('./del.svg');
   background-position: center center;
   background-repeat: none;
+
+  cursor: pointer;
+}
+
+.Task--completed {
+  opacity: 0.3;
+    .Task__toggle {
+      background-image: url('./done.svg');
+      background-position: center center;
+      background-repeat: none;
+    }
+
+    .Task__text {
+      text-decoration: line-through;
+    }
 }

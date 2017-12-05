@@ -1,29 +1,38 @@
-.note {
+.Note {
   display: flex;
-  background: #B4DCED;
+
   width: 100%;
+
   margin: 0 0 10px 0;
   padding: 5px;
+
+  background: #B4DCED;
   border-bottom: 2px solid black;
 }
 
-.note-text {
+.Note__text {
   flex-grow: 1;
+
   margin: 0;
   padding: 0;
+  
   white-space: pre-wrap;
 }
 
-.note-del {
+.Note__del {
   flex-shrink: 0;
   align-self: flex-end;
+
   width: 24px;
   height: 24px;
+
   border: none;
   background-color: transparent;
   font-size: 0;
-  cursor: pointer;
-  background-image: url('./clear.svg');
+
+  background-image: url('./del.svg');
   background-position: center center;
   background-repeat: none;
+
+  cursor: pointer;
 }

@@ -1,103 +1,105 @@
 import React from 'react';
 
-import Task from './Task/Task'
-import Note from './Note/Note'
-import Filter from './Filter/Filter';
+import Task from '../Task/Task';
+import Note from '../Note/Note';
+import Filter from '../Filter/Filter'
 
 import './List.css';
 
-export default class List extends React.Component {
-  constructor(props) {
-    super(props);
+class List extends React.Component {
+  componentDidUpdate(prevProps, prevState) {
+    const tasks = JSON.stringify(this.props.tasks);
+    const notes = JSON.stringify(this.props.notes);
 
-    this.state = {
-      filter: 'all'
-    }
-    
-    this.onAllFilter = this.onAllFilter.bind(this);
-    this.onActiveFilter = this.onActiveFilter.bind(this);
-    this.onCompletedFilter = this.onCompletedFilter.bind(this);
-    this.onDelCompleted = this.onDelCompleted.bind(this);
+    localStorage.setItem('tasks', tasks);
+    localStorage.setItem('notes', notes);
   }
 
-  onAllFilter(e) {
-    this.setState({ filter: 'all' });
+  delItem = (e) => {
+    const id = e.target.parentElement.id;
+    const tasks = this.props.tasks;
+    const notes = this.props.notes;
+
+    tasks.forEach((task) => {
+      if (task.id === +id) {
+        return this.props.delTask(id);
+      } 
+    });
+
+    notes.forEach((note) => {
+      if (note.id === +id) {
+        return this.props.delNote(id);
+      } 
+    });
   }
 
-  onActiveFilter(e) {
-    this.setState({ filter: 'active' });
+  toggleTask = (e) => {
+    const id = e.target.parentElement.id;
+
+    this.props.toggleTask(id);
   }
 
-  onCompletedFilter(e) {
-    this.setState({ filter: 'completed' });
+  setFilter = (e) => {
+    this.props.setFilter(e.target.id);
   }
 
-  onDelCompleted(e) {
-    this.props.onDelCompletedTasks(e);
+  delCompleted = (e) => {
+    this.props.delCompleted();
   }
 
   render() {
-    const items = this.props.items;
+    const tasks = this.props.visibleTasks.map((task, index) => {
+      return (
+        <Task
+          id={task.id}
+          text={task.text}
+          completed={task.completed}
+          onToggle={this.toggleTask}
+          onDel={this.delItem}
+          key={index}
+        />
+      );
+    });
 
-    let tasks = items.filter(item => item.type === 'task');
-    let notes = items.filter(item => item.type === 'note');
+    const notes = this.props.notes.map((note, index) => {
+      return (
+        <Note
+          id={note.id}
+          text={note.text}
+          onDel={this.delItem}
+          key={index}
+        />
+      );
+    });
 
-    switch (this.state.filter) {
-      case 'all':
-        break;
-
-      case 'active':
-        tasks = tasks.filter(task => task.active === true);
-        break;
-
-      case 'completed':
-        tasks = tasks.filter(task => task.active === false);
-        break;
-    }
-
-    tasks = (tasks.length) ? (
-        tasks.map((item, index) => (
-          <Task
-            item={item}
-            key={index}
-            onDone={this.props.onDoneTask}
-            onDel={this.props.onDelItem}
-          />
-        ))
-      ) : (
-        <h3 className="list-empty">None {(this.state.filter === 'all') ? null : this.state.filter} tasks</h3>
-    );
-
-    notes = (notes.length) ? (
-        notes.map((item, index) => (
-          <Note
-            item={item}
-            key={index}
-            onDel={this.props.onDelItem}
-          />
-        ))
-      ) : (
-        <h3 className="list-empty">None notes</h3>
-    );
+    const classDelCompleted = (this.props.tasks.filter(t => t.completed).length) ? '' : 'List__del-completed--disabled';
 
     return (
-      <section className="list">
-        <section className="list-tasks">
-          <h2 className="list-title">Tasks</h2>
-          {tasks}
-          <Filter
-            filter={this.state.filter}
-            onAll={this.onAllFilter}
-            onActive={this.onActiveFilter}
-            onCompleted={this.onCompletedFilter}
-            onDelCompleted={this.onDelCompleted}
-          />
-        </section>
-        <section className="list-notes">
-          <h2 className="list-title">Notes</h2>
-          {notes}
-        </section>
+      <section className="List">
+        <div className="List__tasks">
+          <h2>Tasks</h2>
+          { (tasks.length) ? tasks : <h3 className="List__empty">None tasks</h3> }
+
+          <div className="List__wrapper">
+            <Filter
+              filter={this.props.filter}
+              setFilter={this.setFilter}
+              delCompleted={this.delCompleted}
+            />
+            <button
+              className={`List__del-completed ${classDelCompleted}`}
+              onClick={this.delCompleted}
+            >Clear</button>
+          </div>
+        </div>
+        
+        <div className="List__notes">
+          <h2>Notes</h2>
+          { (notes.length) ? notes : <h3 className="List__empty">None notes</h3> }
+        </div>
       </section>
     );
   }
 }
+
+export default List;
